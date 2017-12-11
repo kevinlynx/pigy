@@ -1,0 +1,8 @@
+package netmsg;
+
+message NetMsg {
+	required int32 id = 1;
+	required bytes payload = 2;
+    optional int32 code = 3 [default = 0];
+}
+

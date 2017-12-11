@@ -1,0 +1,82 @@
+package hall;
+
+message GetUserInfo {
+}
+
+message UserRoomInfo {
+    required string sname = 1;
+    required int32 rid = 2;
+}
+
+message GetUserInfoResponse {
+    optional UserRoomInfo room = 1;
+}
+
+message Room {
+    required int32 rid = 1;
+    required int32 gid = 2;
+    required string sname = 3;
+}
+
+message GameInfo {
+    repeated Room rooms = 1;
+    required int32 gid = 2;
+}
+
+message GetGameList {
+}
+
+message GetGameListResponse {
+    repeated GameInfo games = 1;
+}
+
+message ServerInfo {
+    required string ip = 1;
+    required int32 port = 2;
+}
+
+message CreateRoom {
+    required int32 id = 1;
+}
+
+message CreateRoomResponse {
+    required ServerInfo server = 1;
+    required int32 rid = 2;
+}
+
+message SelectRoom {
+    required int32 rid = 1;
+    required string sname = 2;
+}
+
+message SelectRoomResponse {
+    optional ServerInfo server = 1;
+    required int32 code = 2;
+}
+
+// if user re-login and already entered in some room
+message ReconnRoom {
+}
+
+message ReconnRoomResponse {
+    optional ServerInfo server = 1;
+    required int32 code = 2;
+    optional int32 rid = 3;
+}
+
+message LeaveRoom {
+}
+
+message LeaveRoomResponse {
+    required int32 code = 1;
+}
+
+// destroy a room by its creator
+message DestroyRoom {
+    required int32 id = 1;
+}
+
+message DestroyRoomResponse {
+    required int32 code = 1; // 200 ok, 403 forbidden, 404 not found
+}
+

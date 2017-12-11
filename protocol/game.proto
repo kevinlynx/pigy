@@ -1,0 +1,9 @@
+package game;
+
+message EnterRoom {
+    required int32 rid = 1;
+}
+
+message PlayGame {
+    optional bytes detail = 1;
+}
